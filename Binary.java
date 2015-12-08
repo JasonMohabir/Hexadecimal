@@ -159,7 +159,14 @@ public class Binary {
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-	return _decNum - other._decNum; 
+	if ((Binary)other._decNum == this._decNum){
+		return 0;	
+	}
+	else if ((Binary)other)._decNum > this._decNum){
+		return -1;
+	}
+	return 1;
+	}
     }
 
 
