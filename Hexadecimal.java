@@ -1,17 +1,17 @@
 //skeleton file for class Binary
 
-public class Binary {
+public class Hexadecimal {
 
     public int _decNum;
     public String _binNum;
-
+    private final static String HEXDIGITS = "0123456789ABCDEF"; 
 
     /*=====================================
       default constructor
       pre:  n/a
       post: initializes _decNum to 0, _binNum to "0"
       =====================================*/
-    public Binary() { 
+    public Hexademical() { 
 	_decNum = 0;
 	_binNum = "0";
 
@@ -34,7 +34,7 @@ public class Binary {
       pre:  s is String representing non-negative binary number
       post: sets _binNum to input, _decNum to decimal equiv
       =====================================*/
-    public Binary( String s ) {
+    public Hexadecimal( String s ) {
 	_binNum = s;
 	_decNum = binToDec(s);
     }
@@ -138,16 +138,20 @@ public class Binary {
 
     /*=============================================
       boolean equals(Object) -- tells whether 2 Objs are equivalent
-      pre:  other is an instance of class Binary
+      pre:  other is an instance of class Hexadecimal
       post: Returns true if this and other are aliases (pointers to same 
       Object), or if this and other represent equal binary values
       =============================================*/
     public boolean equals( Object other ) { 
 	//Check for alias                                                                                                                          
 	boolean retval = this == other;
+        if ( ! (other instanceof Hexadecimal))
+        	throw new ClassCastException("
+        	\nMy first error message! "
+        	+ " compareTo() input not a Hexadecimal")
         if (!retval)
 	    //Check for same class and then see if difference is 0 -> Equality                                                                                                   
-	    retval = other instanceof Binary && this.compareTo((Binary)other) == 0;
+	    retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;
         return retval;
     }
 
