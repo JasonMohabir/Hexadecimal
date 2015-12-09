@@ -65,9 +65,12 @@ public class Hexadecimal {
       =====================================*/
     public static String decToHex( int n ) {
 	String retStr = "";
-	while (n != 0){
-	    retStr = HEXDIGITS.substring(n % 16) + retStr;
-	    n /= 2;
+	while (n > 0){
+	    if (n < 16){
+		return HEXDIGITS.substring(n, n+1) + retStr;
+	    }
+	    retStr =  HEXDIGITS.substring(n % 16, n % 16 +1) + retStr;
+	    n /= 16;
 	}
 	return retStr;
     }
@@ -86,7 +89,7 @@ public class Hexadecimal {
     public static String decToHexR( int n ) { 
 	if (n < 16)
 	    {
-		System.out.println ("got to less than 16");
+		
 		return HEXDIGITS.substring(n,n+1)+"";
 }
 	return decToHexR(n/16)+ n%16 + "";
@@ -209,7 +212,11 @@ public class Hexadecimal {
 	  System.out.println( b1.compareTo(b4) ); //should be neg
 	  System.out.println( b4.compareTo(b1) ); //should be pos
 	  System.out.println (decToHex(5) + "       expecting 5");
-  	  System.out.println (decToHex(16) + "       expecting 10"); 
+  	  System.out.println (decToHex(16) + "       expecting 10");
+	  System.out.println (decToHexR(5) + "       expecting 5");
+	  System.out.println (decToHexR(16) + "       expecting 10");
+
+
 
     }//end main()
 
