@@ -59,9 +59,9 @@ public class Hexadecimal {
       post: returns String of bits
       eg  decToHex(0) -> "0"
       decToHex(1) -> "1"
-      decToHex(2) -> "10"
-      decToHex(3) -> "11"
-      decToHex(14) -> "1110"
+      decToHex(2) -> "2"
+      decToHex(3) -> "3"
+      decToHex(14) -> "14"
       =====================================*/
     public static String decToHex( int n ) {
 	String retStr = "";
@@ -82,9 +82,9 @@ public class Hexadecimal {
       post: returns String of bits
       eg  decToHexR(0) -> "0"
       decToHexR(1) -> "1"
-      decToHexR(2) -> "10"
-      decToHexR(3) -> "11"
-      decToHexR(14) -> "1110"
+      decToHexR(2) -> "2"
+      decToHexR(3) -> "3"
+      decToHexR(14) -> "E"
       =====================================*/
     public static String decToHexR( int n ) { 
 	if (n < 16)
@@ -104,12 +104,11 @@ public class Hexadecimal {
       eg  
       hexToDec("0") -> 0
       hexToDec("1") -> 1
-      hexToDec("10") -> 2
-      hexToDec("11") -> 3
-      hexToDec("1110") -> 14
+      hexToDec("2") -> 2
+      hexToDec("3") -> 3
+      hexToDec("E") -> 14
       =====================================*/
     public static int hexToDec( String s ) {
-
 	int ret = 0;
         for (int i = 0; i < s.length(); i++){
 	    int ind = Integer.parseInt(s.substring(i, i+1));
@@ -127,9 +126,9 @@ public class Hexadecimal {
       eg  
       hexToDecR("0") -> 0
       hexToDecR("1") -> 1
-      hexToDecR("10") -> 2
-      hexToDecR("11") -> 3
-      hexToDecR("1110") -> 14
+      hexToDecR("2") -> 2
+      hexToDecR("3") -> 3
+      hexToDecR("E") -> 14
       =====================================*/
     public static int hexToDecR( String s ) { 
 	if (Integer.parseInt(s) < 16)
@@ -211,10 +210,35 @@ public class Hexadecimal {
 	  System.out.println( b1.compareTo(b3) ); //should be 0
 	  System.out.println( b1.compareTo(b4) ); //should be neg
 	  System.out.println( b4.compareTo(b1) ); //should be pos
-	  System.out.println (decToHex(5) + "       expecting 5");
-  	  System.out.println (decToHex(16) + "       expecting 10");
-	  System.out.println (decToHexR(5) + "       expecting 5");
-	  System.out.println (decToHexR(16) + "       expecting 10");
+
+	  System.out.println( "\nvalue tests decToHex..." );
+	  System.out.println (decToHex(5) + "\texpecting 5");
+	  System.out.println (decToHex(12) + "\texpecting C");
+	  System.out.println (decToHex(15) + "\texpecting F");
+	  System.out.println (decToHex(20) + "\texpecting 14");
+  	  System.out.println (decToHex(43) + "\texpecting 2B");
+
+	  System.out.println( "\nvalue tests decToHexR..." );
+	  System.out.println (decToHexR(5) + "\texpecting 5");
+	  System.out.println (decToHexR(12) + "\texpecting C");
+	  System.out.println (decToHexR(15) + "\texpecting F");
+	  System.out.println (decToHexR(20) + "\texpecting 14");
+  	  System.out.println (decToHexR(43) + "\texpecting 2B");
+
+	  System.out.println( "\nvalue tests hexToDec..." );
+	  System.out.println (hexToDec("5") + "\texpecting 5");
+	  System.out.println (hexToDec("C") + "\texpecting 12");
+	  System.out.println (hexToDec("F") + "\texpecting 15");
+	  System.out.println (hexToDec("14") + "\texpecting 20");
+	  System.out.println (hexToDec("2B") + "\texpecting 43");
+
+	  System.out.println( "\nvalue tests hexToDecR..." );
+	  System.out.println (hexToDecR("5") + "\texpecting 5");
+	  System.out.println (hexToDecR("C") + "\texpecting 12");
+	  System.out.println (hexToDecR("F") + "\texpecting 15");
+	  System.out.println (hexToDecR("14") + "\texpecting 20");
+	  System.out.println (hexToDecR("2B") + "\texpecting 43");
+
 
 
 
