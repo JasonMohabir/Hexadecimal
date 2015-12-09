@@ -1,4 +1,4 @@
-//Team - Sweet hexa-teen -- Bayle Smith-Salzberg and Jason Mohabir
+//Team Sweet hexa-teen -- Bayle Smith-Salzberg and Jason Mohabir
 //APCS1 pd10
 //HW44 -- This or That or Fourteen Other Things
 //2015-12-08
@@ -113,10 +113,10 @@ public class Hexadecimal {
 	int placeVal=0;
 	for( int i=0; i < s.length(); i++ ) {
 	    placeVal = s.length() - 1 - i;
-	    decVal += HEXDIGITS.indexOf(s.substring(i,i+1))
+	    retInt += HEXDIGITS.indexOf(s.substring(i,i+1))
 		* Math.pow(16,placeVal);
 	}
-	return decVal;
+	return retInt;
     }
 
     /*=====================================
@@ -145,12 +145,15 @@ public class Hexadecimal {
       Object), or if this and other represent equal hexary values
       =============================================*/
     public boolean equals( Object other ) { 
-	//Check for alias                                                                                                                          
+
+	/*
+	if (! ( other instanceof Binary) ) {
+	    throw new ClassCastException 
+		( ""\nMy first error message!" + "compareTo() input not a Binary."");
+	*/
+
+//Check for alias                                                                                                                          
 	boolean retval = this == other;
-   /*    if ( ! (other instanceof Hexadecimal))
-        	throw new ClassCastException("
-        	\nMy first error message! "
-        	+ " compareTo() input not a Hexadecimal") */
         if (!retval)
 	    //Check for same class and then see if difference is 0 -> Equality                                                                                                   
 	    retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;
@@ -235,9 +238,6 @@ public class Hexadecimal {
 	  System.out.println (hexToDecR("F") + "\texpecting 15");
 	  System.out.println (hexToDecR("14") + "\texpecting 20");
 	  System.out.println (hexToDecR("2B") + "\texpecting 43");
-
-
-
 
     }//end main()
 
