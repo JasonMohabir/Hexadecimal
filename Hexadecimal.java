@@ -1,4 +1,7 @@
-//skeleton file for class Binary
+//Team - Sweet hexa-teen -- Bayle Smith-Salzberg and Jason Mohabir
+//APCS1 pd10
+//HW44 -- This or That or Fourteen Other Things
+//2015-12-08
 
 public class Hexadecimal {
 
@@ -11,7 +14,7 @@ public class Hexadecimal {
       pre:  n/a
       post: initializes _decNum to 0, _binNum to "0"
       =====================================*/
-    public Hexademical() { 
+    public Hexadecimal() { 
 	_decNum = 0;
 	_binNum = "0";
 
@@ -23,7 +26,7 @@ public class Hexadecimal {
       pre:  n >= 0
       post: sets _decNum to n, _binNum to equiv string of bits
       =====================================*/
-    public Binary( int n ) {
+    public Hexadecimal( int n ) {
 	_decNum = n;
 	_binNum = decToBin(n);
     }
@@ -82,11 +85,11 @@ public class Hexadecimal {
       decToBinR(14) -> "1110"
       =====================================*/
     public static String decToBinR( int n ) { 
-	String retStr;
-	if (n == 0){return retStr;}
-	else {retStr = decToBinR(n/2)+ n%2;}
+	if (n < 2)
+	    {return n+"";}
+	return decToBinR(n/2)+ n%2 + "";
 
- }
+    }
 
 
     /*=====================================
@@ -101,15 +104,12 @@ public class Hexadecimal {
       binToDec("1110") -> 14
       =====================================*/
     public static int binToDec( String s ) {
-	int retInt = 0;
-	int p = 0;
-	int len = s.length();
-	while ( s != "0"){
-	    retInt += Integer.parseInt(s.substring(len)) * Math.pow(2,p);
-	    p++;
-	    len--;
+
+	int ret = 0;
+        for (int i = 0; i < s.length(); i++){
+	    ret += Integer.parseInt(s.substring(i, i+1))* Math.pow(2, i);
 	}
-	
+	return ret;	    
 	    
     }
 
@@ -145,10 +145,10 @@ public class Hexadecimal {
     public boolean equals( Object other ) { 
 	//Check for alias                                                                                                                          
 	boolean retval = this == other;
-        if ( ! (other instanceof Hexadecimal))
+   /*    if ( ! (other instanceof Hexadecimal))
         	throw new ClassCastException("
         	\nMy first error message! "
-        	+ " compareTo() input not a Hexadecimal")
+        	+ " compareTo() input not a Hexadecimal") */
         if (!retval)
 	    //Check for same class and then see if difference is 0 -> Equality                                                                                                   
 	    retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;
@@ -163,7 +163,13 @@ public class Hexadecimal {
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-	return _decNum - other._decNum; 
+	if (((Hexadecimal)other)._decNum == this._decNum){
+	    return 0;
+	}
+	else if (((Hexadecimal)other)._decNum > this._decNum){
+	    return -1;
+	}
+	return 1;
     }
 
 
@@ -173,10 +179,10 @@ public class Hexadecimal {
 	  System.out.println();
 	  System.out.println( "Testing ..." );
 
-	  Binary b1 = new Binary(5);
-	  Binary b2 = new Binary(5);
-	  Binary b3 = b1;
-	  Binary b4 = new Binary(7);
+	  Hexadecimal b1 = new Hexadecimal(5);
+	  Hexadecimal b2 = new Hexadecimal(5);
+	  Hexadecimal b3 = b1;
+	  Hexadecimal b4 = new Hexadecimal(7);
 
 	  System.out.println( b1 );
 	  System.out.println( b2 );
@@ -199,6 +205,7 @@ public class Hexadecimal {
 	  System.out.println( b1.compareTo(b3) ); //should be 0
 	  System.out.println( b1.compareTo(b4) ); //should be neg
 	  System.out.println( b4.compareTo(b1) ); //should be pos
+	  System.out.println (decToBin(5) + "       expecting 101"); 
     }//end main()
 
 } //end class
