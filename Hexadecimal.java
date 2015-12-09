@@ -88,14 +88,10 @@ public class Hexadecimal {
       =====================================*/
     public static String decToHexR( int n ) { 
 	if (n < 16)
-	    {
-		
-		return HEXDIGITS.substring(n,n+1)+"";
-}
-	return decToHexR(n/16)+ n%16 + "";
-
+	    {return HEXDIGITS.substring(n,n+1)+"";}
+	
+	return decToHexR(n/16)+ HEXDIGITS.substring(n%16, n%16 + 1) + "";
     }
-
 
     /*=====================================
       String hexToDec(String) -- converts base-10 input to hexary
