@@ -146,6 +146,7 @@ public class Hexadecimal {
       =============================================*/
     public boolean equals( Object other ) { 
 	
+<<<<<<< HEAD
 	
 	if (! ( other instanceof Binary) ) {
 	    throw new ClassCastException 
@@ -158,8 +159,16 @@ public class Hexadecimal {
 		retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;}
 	    
 	    return retval;
+=======
+	//Check for alias                                                                                                                          
+	boolean retval = this == other;
+	if (!retval)
+	    //Check for same class and then see if difference is 0                                                                                   
+	    retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;
+        return retval;
+>>>>>>> dca56318fd8c3984491d2ab2d783c4c14c27465a
     }
-
+    
 
     /*=============================================
       int compareTo(Object) -- tells which of two Hexary objects is greater
@@ -167,7 +176,13 @@ public class Hexadecimal {
       post: Returns 0 if this Object is equal to the input Object,
       negative integer if this<input, positive integer otherwise
       =============================================*/
+
     public int compareTo( Object other ) {
+
+	if (! ( other instanceof Hexadecimal) ) {
+	    throw new ClassCastException ( "\ncompareTo() input not a Hexadecimal");
+	}
+
 	if (((Hexadecimal)other)._decNum == this._decNum){
 	    return 0;
 	}
