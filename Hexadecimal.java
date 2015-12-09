@@ -109,15 +109,15 @@ public class Hexadecimal {
       hexToDec("E") -> 14
       =====================================*/
     public static int hexToDec( String s ) {
-	int ret = 0;
-        for (int i = 0; i < s.length(); i++){
-	    int ind = Integer.parseInt(s.substring(i, i+1));
-	    ret += HEXDIGITS.indexOf(ind,ind+1)* Math.pow(16, i);
+	int retInt = 0;
+	int placeVal=0;
+	for( int i=0; i < s.length(); i++ ) {
+	    placeVal = s.length() - 1 - i;
+	    decVal += HEXDIGITS.indexOf(s.substring(i,i+1))
+		* Math.pow(16,placeVal);
 	}
-	return ret;	    
-	    
+	return decVal;
     }
-
 
     /*=====================================
       String hexToDecR(String) -- converts base-10 input to hexary, recursively
@@ -131,13 +131,10 @@ public class Hexadecimal {
       hexToDecR("E") -> 14
       =====================================*/
     public static int hexToDecR( String s ) { 
-	if (Integer.parseInt(s) < 16)
-	    {return HEXDIGITS.indexOf(Integer.parseInt(s));}
-	else {
-	    int len = s.length();
-	    return HEXDIGITS.indexOf(Integer.parseInt(s.substring(len))) + 
-		16 * hexToDecR(s.substring(0,len));
-		}
+	if (s.length()==1) return HEXDIGITS.indexOf(s);
+	else return hexToDec( s.substring(1) ) 
+		 + HEXDIGITS.indexOf(s.substring(0,1)) 
+		 * (int)Math.pow(16, s.length() - 1);
     }
 
 
