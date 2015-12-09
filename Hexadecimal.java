@@ -141,28 +141,13 @@ public class Hexadecimal {
       Object), or if this and other represent equal hexary values
       =============================================*/
     public boolean equals( Object other ) { 
-	
-<<<<<<< HEAD
-	
-	if (! ( other instanceof Binary) ) {
-	    throw new ClassCastException 
-		( "\nMy first error message!" + "compareTo() input not a Binary.");
-	
-
-	    //Check for alias                                                                                                                          
-	    boolean retval = this == other;
-	    if (!retval){
-		retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;}
-	    
-	    return retval;
-=======
 	//Check for alias                                                                                                                          
 	boolean retval = this == other;
 	if (!retval)
 	    //Check for same class and then see if difference is 0                                                                                   
 	    retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;
         return retval;
->>>>>>> dca56318fd8c3984491d2ab2d783c4c14c27465a
+
     }
     
 
