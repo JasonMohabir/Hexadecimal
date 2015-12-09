@@ -89,7 +89,7 @@ public class Hexadecimal {
     public static String decToHexR( int n ) { 
 	if (n < 16)
 	    {return HEXDIGITS.substring(n,n+1)+"";}
-	
+
 	return decToHexR(n/16)+ HEXDIGITS.substring(n%16, n%16 + 1) + "";
     }
 
@@ -142,12 +142,27 @@ public class Hexadecimal {
       =============================================*/
     public boolean equals( Object other ) { 
 	
+<<<<<<< HEAD
+	
+	if (! ( other instanceof Binary) ) {
+	    throw new ClassCastException 
+		( "\nMy first error message!" + "compareTo() input not a Binary.");
+	
+
+	    //Check for alias                                                                                                                          
+	    boolean retval = this == other;
+	    if (!retval){
+		retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;}
+	    
+	    return retval;
+=======
 	//Check for alias                                                                                                                          
 	boolean retval = this == other;
 	if (!retval)
 	    //Check for same class and then see if difference is 0                                                                                   
 	    retval = other instanceof Hexadecimal && this.compareTo((Hexadecimal)other) == 0;
         return retval;
+>>>>>>> dca56318fd8c3984491d2ab2d783c4c14c27465a
     }
     
 
